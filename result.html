@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Result</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h2 class="mt-5 mb-4">Registration Result</h2>
+
+        <div class="card">
+            <div class="card-body" id="registrationInfo">
+                <!-- Registered information will be displayed here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Retrieve registration data from local storage
+        const registrationData = JSON.parse(localStorage.getItem("registrationData"));
+
+        // Display registration data
+        if (registrationData) {
+            const registrationInfoDiv = document.getElementById("registrationInfo");
+
+            const nameParagraph = document.createElement("p");
+            nameParagraph.textContent = "Name: " + registrationData.name;
+            registrationInfoDiv.appendChild(nameParagraph);
+
+            const emailParagraph = document.createElement("p");
+            emailParagraph.textContent = "Email: " + registrationData.email;
+            registrationInfoDiv.appendChild(emailParagraph);
+
+            const passwordParagraph = document.createElement("p");
+            passwordParagraph.textContent = "Password: " + registrationData.password;
+            registrationInfoDiv.appendChild(passwordParagraph);
+        } else {
+            // If registration data is not found, display a message
+            document.getElementById("registrationInfo").textContent = "No registration data found.";
+        }
+    </script>
+
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
